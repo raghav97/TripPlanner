@@ -1,13 +1,13 @@
-<a class = "align-right1" href = "/login"> Login </a>
-<a class = "align-right2" href = "/signup"> Signup </a>
-<a class = "align-right3" href = "/become_a_host"> Become a Host </a>
+<span class="align-right1">Logged in as <strong><%= current_user.name %></strong></span>
+<div class = "align-right2"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: '' %> </div>
+<a class = "align-right3" href = "/chat"> Chat </a>
 <a class = "align-right4" href = "/help"> Help </a>
 
 <h1> <%= @city.name %> </h1>
 
 <hr class = "hor-line">
 
-<br> <br> <br>
+
 
 <% @city.rooms.each do |e| %>
   <% if e.available == true %>
@@ -16,8 +16,15 @@
     <a href = "/room/<%= e.id %>"> <img class = "center-img" src = "/<%= e.image_src %>" height = "300px" width = "600px"> </a>
     <h2 class = "small-bold">  ₹<%= e.price %> per night</h2>
     <br> <br> <br>
+    <hr class = "hor-line">
   <% end %>
 <% end %>
 
-<br> <br> <br>
-
+<br> <br>
+<footer>
+  <hr>
+  <h6 class = "foot">Developed by Raghav VC &nbsp &nbsp &nbsp vc.raghav@gmail.com &nbsp &nbsp &nbsp github.com/raghav97</h6>
+    <i class="glyphicon glyphicon-heart"> </i>
+  <h6 class = "foot1">Coded with &nbsp &nbsp &nbsp &nbsp using Ruby on Rails</h6>
+  <hr>
+</footer>

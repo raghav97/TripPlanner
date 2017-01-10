@@ -1,0 +1,44 @@
+<span class="align-right1">Logged in as <strong><%= current_user.name %></strong></span>
+<div class = "align-right2"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: '' %> </div>
+<a class = "align-right3" href = "/chat"> Chat </a>
+<a class = "align-right4" href = "/help"> Help </a>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<% if @cities.count.to_i > 0 %>
+  <br> <br> <br>
+  <h1> <%= @cities.first.name %> </h1>
+
+  <hr class = "hor-line">
+
+
+
+  <% @cities.first.rooms.each do |e| %>
+    <% if e.available == true %>
+      <a class = "left-name" href = "/room/<%= e.id %>"> <%= e.name %> </a>
+      <br> <br> <br>
+      <a href = "/room/<%= e.id %>"> <img class = "center-img" src = "/<%= e.image_src %>" height = "300px" width = "600px"> </a>
+      <h2 class = "small-bold">  ₹<%= e.price %> per night</h2>
+      <br> <br> <br>
+      <hr class = "hor-line">
+    <% end %>
+  <% end %>
+<% else %>
+  <h1 class = "no-match"> Sorry, no match found. Please search on </h1>
+    <div class="search-box">
+    <form action="/search" method="GET">
+      <input type="text" name="query" id="" placeholder="Where to? ">
+      <button type="submit"><span class="fa fa-search"></span></button>
+    </form>
+  </div>
+<% end %>
+
+<footer>
+  <hr>
+  <h6 class = "foot">Developed by Raghav VC &nbsp &nbsp &nbsp vc.raghav@gmail.com &nbsp &nbsp &nbsp github.com/raghav97</h6>
+    <i class="glyphicon glyphicon-heart"> </i>
+  <h6 class = "foot1">Coded with &nbsp &nbsp &nbsp &nbsp using Ruby on Rails</h6>
+  <hr>
+</footer>

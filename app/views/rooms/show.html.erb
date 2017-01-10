@@ -1,8 +1,11 @@
-<a class = "align-right1" href = "/login"> Login </a>
-<a class = "align-right2" href = "/signup"> Signup </a>
-<a class = "align-right3" href = "/become_a_host"> Become a Host </a>
+<span class="align-right1">Logged in as <strong><%= current_user.name %></strong></span>
+<div class = "align-right2"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: '' %> </div>
+<a class = "align-right3" href = "/chat"> Chat </a>
 <a class = "align-right4" href = "/help"> Help </a>
 
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
 <br> <br>
 <hr class = "hor-line">
 
@@ -10,3 +13,74 @@
 
 <img src = "/<%= @room.image_src %>" height = "400px" width = "100%">
 
+
+<div class = "host">
+
+  <a href = "/host/<%= @room.id %>"> <img class = "host-img" src = "/<%= @room.owner_src %>" height = "100px" width = "100px"> </a>
+  <h5 class = "host-name"> <%= @room.host_name %> </h5>
+  <p class = "host-name"> (Your Host) </p>
+</div>
+
+<div class = "room-content">
+  <h2 class = "text-left"> <%= @room.description %> </h2>
+  <p class = "small"> <%= @room.city.first.name %>, <%= @room.city.first.state %>, <%= @room.city.first.country %> </p>
+  <% @room.rating.times do %>
+    <i class="glyphicon glyphicon-star"></i>
+  <% end %>
+
+  <br>
+  <h2 class = "text-left">  ₹<%= @room.price %> per night</h2>
+  <p class = "small"> (minimum <%= @room.minumum_stay %> night stays) </p>
+</div>
+
+<br> <br> <br> <br>
+
+
+
+  <i class="glyphicon glyphicon-user">&nbsp &nbsp</i>
+  <i class="glyphicon glyphicon-bed">&nbsp &nbsp</i>
+  <i class="glyphicon glyphicon-calendar">&nbsp &nbsp</i>
+
+
+<br> <br> <br>
+
+<div class = "gly-content">
+  <p class = "left-one"> <% if @room.accomodates == 1 %> 1 Guest <% else %> <%= @room.accomodates %> Guests <% end %>  </p>
+  <p class = "mid-one"> <% if @room.beds == 1 %> 1 Bed <% else %> <%= @room.beds %> beds <% end %> </p>
+  <% if @room.available %>
+    <p class = "right-one"> Available </p>
+  <% end %> 
+</div>
+
+
+<br>
+<hr>
+<h5 class = "small-head"> Room info </h5>
+<div class = "room-stats">
+  <p class = "info-para-left"> Accomodates: <%= @room.accomodates %> </p>
+  <p class = "info-para-left"> Bedrooms: <%= @room.bedrooms %> </p>
+  <p class = "info-para-left"> Beds: <%= @room.beds %> </p>
+  <p class = "info-para-left"> Bathrooms: <%= @room.bathrooms %> </p>
+  <p class = "info-para-left"> Check-in: <%= @room.check_in %> </p>
+  <p class = "info-para-left"> Check-out: <%= @room.check_out %> </p>
+  <p class = "info-para-left"> Wifi: <% if @room.wifi %> Yes <% else %> No <% end %> </p>
+  <p class = "info-para-left"> TV: <% if @room.tv %> Yes <% else %> No <% end %> </p>
+  <p class = "info-para-left"> AC: <% if @room.ac %> Yes <% else %> No <% end %> </p>
+  <p class = "info-para-left"> Minimum Stay: <%= @room.minumum_stay %> nights</p>
+  <p class = "info-para-left"> Rules: <%= @room.rules %> </p>
+</div>
+<hr>
+
+<h5 class = "small-head"> Address </h5>
+<div class = "room-stats">
+  <p class = "info-para-left"><%= @room.address %> </p>
+  <p class = "info-para-left"> Pincode: <%= @room.pin_code %> </p>
+  <p class = "info-para-left"> Contact: +91-<%= @room.phone_number %> </p>
+</div>
+<footer>
+  <hr>
+  <h6 class = "foot">Developed by Raghav VC &nbsp &nbsp &nbsp vc.raghav@gmail.com &nbsp &nbsp &nbsp github.com/raghav97</h6>
+    <i class="glyphicon glyphicon-heart"> </i>
+  <h6 class = "foot1">Coded with &nbsp &nbsp &nbsp using Ruby on Rails</h6>
+  <hr>
+</footer>

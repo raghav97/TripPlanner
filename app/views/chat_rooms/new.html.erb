@@ -1,0 +1,19 @@
+<h1>Add chat room</h1>
+
+<%= form_for @chat_room do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, autofocus: true, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Add!", class: 'btn btn-primary' %>
+<% end %>
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<footer>
+  <hr>
+  <h6 class = "foot">Developed by Raghav VC &nbsp &nbsp &nbsp vc.raghav@gmail.com &nbsp &nbsp &nbsp github.com/raghav97</h6>
+    <i class="glyphicon glyphicon-heart"> </i>
+  <h6 class = "foot1">Coded with &nbsp &nbsp &nbsp &nbsp using Ruby on Rails</h6>
+  <hr>
+</footer>

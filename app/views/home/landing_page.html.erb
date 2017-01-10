@@ -1,14 +1,16 @@
+<span class="align-right1">Logged in as <strong><%= current_user.name %></strong></span>
+<div class = "align-right2"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: '' %> </div>
 
-<a class = "align-right1" href = "/login"> Login </a>
-<a class = "align-right2" href = "/signup"> Signup </a>
-<a class = "align-right3" href = "/become_a_host"> Become a Host </a>
+<a class = "align-right3" href = "/chat"> Chat </a>
 <a class = "align-right4" href = "/help"> Help </a>
 
 <head> 
-  <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'application' %>   
   <%= javascript_include_tag 'application' %> 
   <%= csrf_meta_tags %>
 </head>
+
+<br>
 
 <h1> Let's find a beautiful place to get lost! </h1>
 <style>
@@ -19,10 +21,10 @@
 
 
 <div class="w3-content w3-section">
-  <img class="mySlides" src="assets/images/tent.jpg" height = "550px" width = "100%">
-  <img class="mySlides" src="assets/images/tent2.jpg" height = "550px" width = "100%">
-  <img class="mySlides" src="assets/images/tent3.jpg" height = "550px" width = "100%">
-  <img class="mySlides" src="assets/images/imgs.jpg" height = "550px" width = "100%">  
+  <img class="mySlides" src="/assets/images/tent.jpg" height = "500px" width = "100%">
+  <img class="mySlides" src="/assets/images/tent2.jpg" height = "500px" width = "100%">
+  <img class="mySlides" src="/assets/images/tent3.jpg" height = "500px" width = "100%">
+  <img class="mySlides" src="/assets/images/imgs.jpg" height = "500px" width = "100%">  
 </div>
 
 <script>
@@ -52,13 +54,21 @@ function carousel() {
 <br> <br> <br>
 <h3> Featured destinations </h3>
 
-<a href = "/city/1"> <img class = "left-img" src = "assets/images/chennai.jpg" height = "200px" width = "400px"> </a>
-<a href = "/city/2"> <img class = "right-img" src = "assets/images/agra.jpg" height = "200px" width = "400px"> </a>
+<a href = "/city/1"> <img class = "left-img" src = "/assets/images/chennai.jpg" height = "200px" width = "400px"> </a>
+<a href = "/city/2"> <img class = "right-img" src = "/assets/images/agra.jpg" height = "200px" width = "400px"> </a>
 <br>
-<a href = "/city/3"> <img class = "left-img" src = "assets/images/delhi.jpg" height = "200px" width = "400px"> </a>
-<a href = "/city/4"> <img class = "right-img" src = "assets/images/goa.jpg" height = "200px" width = "400px"> </a>
+<a href = "/city/3"> <img class = "left-img" src = "/assets/images/delhi.jpg" height = "200px" width = "400px"> </a>
+<a href = "/city/4"> <img class = "right-img" src = "/assets/images/goa.jpg" height = "200px" width = "400px"> </a>
 <br>
-<a href = "/city/5"> <img class = "left-img" src = "assets/images/kolkata.jpg" height = "200px" width = "400px"> </a>
-<a href = "/city/6"> <img class = "right-img" src = "assets/images/mumbai.jpg" height = "200px" width = "400px"> </a>
+<a href = "/city/5"> <img class = "left-img" src = "/assets/images/kolkata.jpg" height = "200px" width = "400px"> </a>
+<a href = "/city/6"> <img class = "right-img" src = "/assets/images/mumbai.jpg" height = "200px" width = "400px"> </a>
 
 </body>
+
+<footer>
+  <hr>
+  <h6 class = "foot">Developed by Raghav VC &nbsp &nbsp &nbsp vc.raghav@gmail.com &nbsp &nbsp &nbsp github.com/raghav97</h6>
+    <i class="glyphicon glyphicon-heart"> </i>
+  <h6 class = "foot1">Coded with &nbsp &nbsp &nbsp &nbsp using Ruby on Rails</h6>
+  <hr>
+</footer>

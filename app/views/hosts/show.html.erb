@@ -1,0 +1,37 @@
+<span class="align-right1">Logged in as <strong><%= current_user.name %></strong></span>
+<div class = "align-right2"><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: '' %> </div>
+<a class = "align-right3" href = "/chat"> Chat </a>
+<a class = "align-right4" href = "/help"> Help </a>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<h2 class = "small-host-head"> Your Host </h2>
+<hr class = "hor">
+
+<br> <br> 
+
+<div class = "chuma">
+  <img class = "host-img-center" src = "/<%= @host.image_url %>" height = "200" width = "200px">
+</div>
+
+<div class = "host-informa">
+  <h4 class = "small-bold-hosts"> <%= @host.first_name %>  <%= @host.last_name %></h4>
+  <p class = "small-para-hosts"> <%= CityHostRelation.find_by(host_id: @host.id).city.name %>, <%= CityHostRelation.find_by(host_id: @host.id).city.state %>, <%= CityHostRelation.find_by(host_id: @host.id).city.country %> . Joined <%= @host.join_date %> </p>
+  <h4 class = "small-para-hosts"> Response Rate: <%= @host.response_rate %> % </h4>
+  <h4 class = "small-para-hosts"> Response Time: <% if @host.response_time == 1 %> within one hour <%else %> <%= @host.response_time %> hours <% end %> </h4>
+  <h4 class = "small-para-hosts"> Reviews: <%= @host.reviews %>  </h4>
+  <h4 class = "small-para-hosts"> +91-<%= @host.contact%> </h4>
+  <h4 class = "small-para-hosts"> <%= @host.email %>  </h4>
+  <br>
+  <i class="glyphicon glyphicon-ok">  Verified</i>
+</div>
+<br> <br>
+<footer>
+  <hr>
+  <h6 class = "foot">Developed by Raghav VC &nbsp &nbsp &nbsp vc.raghav@gmail.com &nbsp &nbsp &nbsp github.com/raghav97</h6>
+    <i class="glyphicon glyphicon-heart"> </i>
+  <h6 class = "foot1">Coded with &nbsp &nbsp &nbsp &nbsp using Ruby on Rails</h6>
+  <hr>
+</footer>

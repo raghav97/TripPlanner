@@ -1,3 +1,11 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+
 City.create([
   {name: "Chennai", country: "India", state: "Tamil Nadu"},
   {name: "Agra", country: "India", state: "Uttar Pradesh"},
@@ -9,7 +17,7 @@ City.create([
 
 Room.create([
   {
-    phone_number: 1234,
+    phone_number: 9600129789,
     name: "Subiksha Flats",
     description: "A great place to spend great time in Chennai",
     pin_code: 6000061,
@@ -39,7 +47,7 @@ CityRoomRelation.create({city_id: City.first.id, room_id: Room.first.id})
 
 Room.create([
   {
-    phone_number: 56372,
+    phone_number: 9620125799,
     name: "Taj view Hotel",
     description: "A perfect sight of the Taj Mahal",
     pin_code: 8000023,
@@ -69,7 +77,7 @@ CityRoomRelation.create({city_id: City.second.id, room_id: Room.second.id})
 
 Room.create([
   {
-    phone_number: 8781,
+    phone_number: 8201629481,
     name: "Red Fort Palace",
     description: "Enjoy the Delhi city",
     pin_code: 8000023,
@@ -99,7 +107,7 @@ CityRoomRelation.create({city_id: City.third.id, room_id: Room.third.id})
 
 Room.create([
   {
-    phone_number: 82192,
+    phone_number: 9444332129,
     name: "Beach View Resort",
     description: "Just 2 minutes from the beach",
     pin_code: 772189,
@@ -129,17 +137,17 @@ CityRoomRelation.create({city_id: City.fourth.id, room_id: Room.fourth.id})
 
 Room.create([
   {
-    phone_number: 8812,
+    phone_number: 7418116728,
     name: "Victoria Flats",
     description: "Enjoy everything Kolkata has to offer",
     pin_code: 932982,
-    image_src: "assets/images/img5.jpg",
+    image_src: "assets/images/img5.jpeg",
     owner_src: "assets/images/face5.jpg",
     rating: 3,
     review: "Amazing place",
     price: 1500, 
     available: true,
-    host_name: "Bunny Bannerjee",
+    host_name: "Erika Stuart",
     accomodates: 2,
     bedrooms: 1,
     bathrooms: 1,
@@ -159,7 +167,7 @@ CityRoomRelation.create({city_id: City.fifth.id, room_id: Room.fifth.id})
 
 Room.create([
   {
-    phone_number: 47983,
+    phone_number: 8148296275,
     name: "Kumar homes",
     description: "Enjoy Bombay",
     pin_code: 432423,
@@ -167,7 +175,7 @@ Room.create([
     owner_src: "assets/images/face6.jpg",
     rating: 2,
     review: "Very bad place",
-    price: 2500, 
+    price: 500, 
     available: true,
     host_name: "Kumar Sharma",
     accomodates: 1,
@@ -189,7 +197,7 @@ CityRoomRelation.create({city_id: 6, room_id: 6})
 
 Room.create([
   {
-    phone_number: 98798,
+    phone_number: 8148860792,
     name: "Bhargava Flats",
     description: "Perfect location to enjoy Chennai",
     pin_code: 6000061,
@@ -219,7 +227,7 @@ CityRoomRelation.create({city_id: 1, room_id: 7})
 
 Room.create([
   {
-    phone_number: 77879,
+    phone_number: 8128743234,
     name: "Marble home",
     description: "Perfect view of Taj Mahal from here",
     pin_code: 2000141,
@@ -246,3 +254,155 @@ Room.create([
 ])
 
 CityRoomRelation.create({city_id: 2, room_id: 8})
+
+Host.create([
+  {
+    first_name: "Raghav",
+    middle_name: "",
+    last_name: "Vc",
+    image_url: "assets/images/face1.jpg",
+    join_date: "17th June 2016",
+    response_rate: 100,
+    response_time: 1,
+    reviews: 0,
+    verified: true,
+    contact: 9600129789,
+    email: "vc.raghav@gmail.com"
+  }
+])
+
+HostRoomRelation.create({host_id: 1, room_id: 1})
+CityHostRelation.create({city_id: 1, host_id: 1})
+
+Host.create([
+  {
+    first_name: "Vikram",
+    middle_name: "",
+    last_name: "Kumar",
+    image_url: "assets/images/face2.jpg",
+    join_date: "20th October 2016",
+    response_rate: 90,
+    response_time: 2,
+    reviews: 0,
+    verified: true,
+    contact: 9620125799,
+    email: "vikram@gmail.com"
+  }
+])
+
+HostRoomRelation.create({host_id: 2, room_id: 2})
+CityHostRelation.create({city_id: 2, host_id: 2})
+
+Host.create([
+  {
+    first_name: "Baba",
+    middle_name: "",
+    last_name: "Singh",
+    image_url: "assets/images/face3.jpg",
+    join_date: "8th December 2016",
+    response_rate: 60,
+    response_time: 3,
+    reviews: 0,
+    verified: true,
+    contact: 8201629481,
+    email: "quanchi44@gmail.com"
+  }
+])
+
+HostRoomRelation.create({host_id: 3, room_id: 3})
+CityHostRelation.create({city_id: 3, host_id: 3})
+
+Host.create([
+  {
+    first_name: "Sunny",
+    middle_name: "",
+    last_name: "Sunshine",
+    image_url: "assets/images/face4.jpg",
+    join_date: "3rd December 2016",
+    response_rate: 100,
+    response_time: 1,
+    reviews: 0,
+    verified: true,
+    contact: 9444332129,
+    email: "sunshine92@gmail.com"
+  }
+])
+
+HostRoomRelation.create({host_id: 4, room_id: 4})
+CityHostRelation.create({city_id: 4, host_id: 4})
+
+Host.create([
+  {
+    first_name: "Erika",
+    middle_name: "",
+    last_name: "Stuart",
+    image_url: "assets/images/face5.jpg",
+    join_date: "28th February 2016",
+    response_rate: 80,
+    response_time: 2,
+    reviews: 0,
+    verified: true,
+    contact: 7418116728,
+    email: "staurt47@gmail.com"
+  }
+])
+
+HostRoomRelation.create({host_id: 5, room_id: 5})
+CityHostRelation.create({city_id: 5, host_id: 5})
+
+Host.create([
+  {
+    first_name: "Kumar",
+    middle_name: "",
+    last_name: "Sharma",
+    image_url: "assets/images/face6.jpg",
+    join_date: "19th June 2016",
+    response_rate: 100,
+    response_time: 1,
+    reviews: 0,
+    verified: true,
+    contact: 8148296275,
+    email: "kumarhomes@gmail.com"
+  }
+])
+
+HostRoomRelation.create({host_id: 6, room_id: 6})
+CityHostRelation.create({city_id: 6, host_id: 6})
+
+Host.create([
+  {
+    first_name: "Giridhar",
+    middle_name: "",
+    last_name: "Vc",
+    image_url: "assets/images/face7.jpg",
+    join_date: "7th April 2016",
+    response_rate: 100,
+    response_time: 2,
+    reviews: 0,
+    verified: true,
+    contact: 8148860792,
+    email: "giridharvc97@gmail.com"
+  }
+])
+
+HostRoomRelation.create({host_id: 7, room_id: 7})
+CityHostRelation.create({city_id: 1, host_id: 7})
+
+Host.create([
+  {
+    first_name: "Sashank",
+    middle_name: "",
+    last_name: "Srinath",
+    image_url: "assets/images/face8.jpg",
+    join_date: "6th November 2016",
+    response_rate: 95,
+    response_time: 3,
+    reviews: 0,
+    verified: true,
+    contact: 8128743234,
+    email: "sashanksrinath@gmail.com"
+  }
+])
+
+HostRoomRelation.create({host_id: 8, room_id: 8})
+CityHostRelation.create({city_id: 2, host_id: 8})
