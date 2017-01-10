@@ -17407,3 +17407,547 @@ Processing by CitiesController#show as HTML
 Completed 200 OK in 117ms (Views: 71.9ms | ActiveRecord: 2.3ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-01-10 20:48:35 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#landing_page as HTML
+Completed 401 Unauthorized in 37ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-01-10 20:48:35 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 636ms (Views: 603.0ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-01-10 20:48:40 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hXo7kR6Q5mNsQ7LbzDMFgH8VOlVzp0tU8tWffVtjtyen72+D8tTf9M92wDJ9hnO8Ef8B1th89nvt+5y04JmT2g==", "user"=>{"email"=>"vc.raghav@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "vc.raghav@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (17.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = ?, "last_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["current_sign_in_at", 2017-01-10 15:18:40 UTC], ["last_sign_in_at", 2017-01-10 04:02:32 UTC], ["sign_in_count", 8], ["updated_at", 2017-01-10 15:18:40 UTC], ["id", 1]]
+  [1m[35m (87.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 512ms (ActiveRecord: 105.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-10 20:48:40 +0530
+Processing by HomeController#landing_page as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/landing_page.html.erb within layouts/application
+  Rendered home/landing_page.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 54ms (Views: 19.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/city/5" for 127.0.0.1 at 2017-01-10 20:48:44 +0530
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering cities/show.html.erb within layouts/application
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" INNER JOIN "city_room_relations" ON "rooms"."id" = "city_room_relations"."room_id" WHERE "city_room_relations"."city_id" = ?[0m  [["city_id", 5]]
+  Rendered cities/show.html.erb within layouts/application (82.5ms)
+Completed 200 OK in 466ms (Views: 100.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/room/5" for 127.0.0.1 at 2017-01-10 20:48:51 +0530
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering rooms/show.html.erb within layouts/application
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 5], ["LIMIT", 1]]
+  Rendered rooms/show.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 89ms (Views: 40.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/city/5" for 127.0.0.1 at 2017-01-10 20:49:18 +0530
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering cities/show.html.erb within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" INNER JOIN "city_room_relations" ON "rooms"."id" = "city_room_relations"."room_id" WHERE "city_room_relations"."city_id" = ?[0m  [["city_id", 5]]
+  Rendered cities/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 43ms (Views: 38.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/city/5" for 127.0.0.1 at 2017-01-10 20:49:20 +0530
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendering cities/show.html.erb within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" INNER JOIN "city_room_relations" ON "rooms"."id" = "city_room_relations"."room_id" WHERE "city_room_relations"."city_id" = ?[0m  [["city_id", 5]]
+  Rendered cities/show.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 32ms (Views: 28.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-10 20:51:16 +0530
+Processing by HomeController#landing_page as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/landing_page.html.erb within layouts/application
+  Rendered home/landing_page.html.erb within layouts/application (20.4ms)
+Completed 200 OK in 33ms (Views: 30.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-10 20:59:31 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#landing_page as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/landing_page.html.erb within layouts/application
+  Rendered home/landing_page.html.erb within layouts/application (243.8ms)
+Completed 200 OK in 275ms (Views: 251.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-10 20:59:36 +0530
+Processing by HomeController#landing_page as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/landing_page.html.erb within layouts/application
+  Rendered home/landing_page.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/city/3" for 127.0.0.1 at 2017-01-10 20:59:40 +0530
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering cities/show.html.erb within layouts/application
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" INNER JOIN "city_room_relations" ON "rooms"."id" = "city_room_relations"."room_id" WHERE "city_room_relations"."city_id" = ?[0m  [["city_id", 3]]
+  Rendered cities/show.html.erb within layouts/application (54.4ms)
+Completed 200 OK in 80ms (Views: 68.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/room/3" for 127.0.0.1 at 2017-01-10 20:59:42 +0530
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rooms/show.html.erb within layouts/application
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 3], ["LIMIT", 1]]
+  Rendered rooms/show.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 33ms (Views: 26.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/host/3" for 127.0.0.1 at 2017-01-10 20:59:45 +0530
+Processing by HostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHost Load (0.1ms)[0m  [1m[34mSELECT  "hosts".* FROM "hosts" WHERE "hosts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering hosts/show.html.erb within layouts/application
+  [1m[36mCityHostRelation Load (0.2ms)[0m  [1m[34mSELECT  "city_host_relations".* FROM "city_host_relations" WHERE "city_host_relations"."host_id" = ? LIMIT ?[0m  [["host_id", 3], ["LIMIT", 1]]
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "city_host_relations".* FROM "city_host_relations" WHERE "city_host_relations"."host_id" = ? LIMIT ?[0m  [["host_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "city_host_relations".* FROM "city_host_relations" WHERE "city_host_relations"."host_id" = ? LIMIT ?[0m  [["host_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered hosts/show.html.erb within layouts/application (49.6ms)
+Completed 200 OK in 110ms (Views: 64.1ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/chat" for 127.0.0.1 at 2017-01-10 20:59:48 +0530
+Processing by ChatRoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering chat_rooms/index.html.erb within layouts/application
+  [1m[36mChatRoom Load (0.1ms)[0m  [1m[34mSELECT "chat_rooms".* FROM "chat_rooms"[0m
+  Rendered collection of chat_rooms/_chat_room.html.erb [1 times] (0.5ms)
+  Rendered chat_rooms/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 91ms (Views: 20.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/chat_rooms/1" for 127.0.0.1 at 2017-01-10 20:59:52 +0530
+Processing by ChatRoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatRoom Load (0.2ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chat_room_id" = 1[0m
+  Rendering chat_rooms/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [5 times] (6.2ms)
+  Rendered chat_rooms/show.html.erb within layouts/application (38.0ms)
+Completed 200 OK in 131ms (Views: 63.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2017-01-10 20:59:52 +0530
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-01-10 20:59:52 +0530
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [vc.raghav@gmail.com] Registered connection (Z2lkOi8vY2FibGUtY2hhdC9Vc2VyLzE)
+Started GET "/room/3" for 127.0.0.1 at 2017-01-10 21:00:39 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering rooms/show.html.erb within layouts/application
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 3], ["LIMIT", 1]]
+  Rendered rooms/show.html.erb within layouts/application (40.4ms)
+Completed 200 OK in 300ms (Views: 255.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-10 21:00:42 +0530
+Processing by HomeController#landing_page as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/landing_page.html.erb within layouts/application
+  Rendered home/landing_page.html.erb within layouts/application (37.1ms)
+Completed 200 OK in 49ms (Views: 45.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/chat" for 127.0.0.1 at 2017-01-10 21:00:45 +0530
+Processing by ChatRoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering chat_rooms/index.html.erb within layouts/application
+  [1m[36mChatRoom Load (0.2ms)[0m  [1m[34mSELECT "chat_rooms".* FROM "chat_rooms"[0m
+  Rendered collection of chat_rooms/_chat_room.html.erb [1 times] (0.5ms)
+  Rendered chat_rooms/index.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 34ms (Views: 28.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/chat_rooms/1" for 127.0.0.1 at 2017-01-10 21:00:46 +0530
+Processing by ChatRoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatRoom Load (0.2ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chat_room_id" = 1[0m
+  Rendering chat_rooms/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [5 times] (9.8ms)
+  Rendered chat_rooms/show.html.erb within layouts/application (37.1ms)
+Completed 200 OK in 100ms (Views: 68.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2017-01-10 21:00:46 +0530
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-01-10 21:00:46 +0530
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [vc.raghav@gmail.com] Registered connection (Z2lkOi8vY2FibGUtY2hhdC9Vc2VyLzE)
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel is transmitting the subscription confirmation
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel is streaming from chat_rooms_1_channel
+Started GET "/chat" for 127.0.0.1 at 2017-01-10 21:00:48 +0530
+Processing by ChatRoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering chat_rooms/index.html.erb within layouts/application
+  [1m[36mChatRoom Load (0.2ms)[0m  [1m[34mSELECT "chat_rooms".* FROM "chat_rooms"[0m
+  Rendered collection of chat_rooms/_chat_room.html.erb [1 times] (0.6ms)
+  Rendered chat_rooms/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/chat_rooms/1" for 127.0.0.1 at 2017-01-10 21:00:50 +0530
+Processing by ChatRoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatRoom Load (0.3ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chat_room_id" = 1[0m
+  Rendering chat_rooms/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [5 times] (6.5ms)
+  Rendered chat_rooms/show.html.erb within layouts/application (10.3ms)
+Completed 200 OK in 36ms (Views: 27.9ms | ActiveRecord: 1.1ms)
+
+
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel#send_message({"message"=>"jknckc", "chat_room_id"=>1})
+[ActionCable] [vc.raghav@gmail.com]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActionCable] [vc.raghav@gmail.com]   [1m[36mChatRoom Load (0.1ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [vc.raghav@gmail.com]   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "messages" ("body", "user_id", "chat_room_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "jknckc"], ["user_id", 1], ["chat_room_id", 1], ["created_at", 2017-01-10 15:30:53 UTC], ["updated_at", 2017-01-10 15:30:53 UTC]]
+[ActionCable] [vc.raghav@gmail.com]   [1m[35m (91.7ms)[0m  [1m[36mcommit transaction[0m
+[ActionCable] [vc.raghav@gmail.com] [ActiveJob] Enqueued MessageBroadcastJob (Job ID: 346587fb-f583-45b8-a3c0-28cffdcc4f24) to Async(default) with arguments: #<GlobalID:0x007f32fda3f8b8 @uri=#<URI::GID gid://cable-chat/Message/6>>
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [346587fb-f583-45b8-a3c0-28cffdcc4f24] Performing MessageBroadcastJob from Async(default) with arguments: #<GlobalID:0x007f32fda06978 @uri=#<URI::GID gid://cable-chat/Message/6>>
+[ActiveJob] [MessageBroadcastJob] [346587fb-f583-45b8-a3c0-28cffdcc4f24]   [1m[36mChatRoom Load (0.1ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [346587fb-f583-45b8-a3c0-28cffdcc4f24]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [346587fb-f583-45b8-a3c0-28cffdcc4f24]   Rendered messages/_message.html.erb (1.7ms)
+[ActiveJob] [MessageBroadcastJob] [346587fb-f583-45b8-a3c0-28cffdcc4f24] [ActionCable] Broadcasting to chat_rooms_1_channel: {:message=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"vc.raghav\" src=\"https://www.gravatar.com/avatar/e7772e09354d2c420a7087682c7c8c27?s=40\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-text\">\n          <span class=\"text-muted\">vc.raghav at 15:30:53 10 January 2017 says</span><br>\n          jknckc\n        </p>\n      </div>\n    </div>\n\n  </div>\n</div>"}
+[ActiveJob] [MessageBroadcastJob] [346587fb-f583-45b8-a3c0-28cffdcc4f24] Performed MessageBroadcastJob from Async(default) in 21.89ms
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel transmitting {"message"=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"vc.raghav\" src=\"https://www.gravatar.com/avatar/e7772e09354d2c420a7087682c7c8c27?s=40\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p clas... (via streamed from chat_rooms_1_channel)
+Started GET "/chat" for 127.0.0.1 at 2017-01-10 21:00:58 +0530
+Processing by ChatRoomsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering chat_rooms/index.html.erb within layouts/application
+  [1m[36mChatRoom Load (0.1ms)[0m  [1m[34mSELECT "chat_rooms".* FROM "chat_rooms"[0m
+  Rendered collection of chat_rooms/_chat_room.html.erb [1 times] (0.5ms)
+  Rendered chat_rooms/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 20ms (Views: 18.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/chat_rooms/1" for 127.0.0.1 at 2017-01-10 21:00:59 +0530
+Processing by ChatRoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatRoom Load (0.3ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chat_room_id" = 1[0m
+  Rendering chat_rooms/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [6 times] (9.6ms)
+  Rendered chat_rooms/show.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 44ms (Views: 37.8ms | ActiveRecord: 1.0ms)
+
+
+[ActionCable] [vc.raghav@gmail.com] Finished "/cable/" [WebSocket] for 127.0.0.1 at 2017-01-10 21:01:10 +0530
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel stopped streaming from chat_rooms_1_channel
+Started GET "/chat_rooms/1" for 127.0.0.1 at 2017-01-10 21:01:10 +0530
+Processing by ChatRoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatRoom Load (0.2ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chat_room_id" = 1[0m
+  Rendering chat_rooms/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [6 times] (6.9ms)
+  Rendered chat_rooms/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 31ms (Views: 25.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2017-01-10 21:01:10 +0530
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-01-10 21:01:10 +0530
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [vc.raghav@gmail.com] Registered connection (Z2lkOi8vY2FibGUtY2hhdC9Vc2VyLzE)
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel is transmitting the subscription confirmation
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel is streaming from chat_rooms_1_channel
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel#send_message({"message"=>"kack", "chat_room_id"=>1})
+[ActionCable] [vc.raghav@gmail.com]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActionCable] [vc.raghav@gmail.com]   [1m[36mChatRoom Load (0.1ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [vc.raghav@gmail.com]   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "messages" ("body", "user_id", "chat_room_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "kack"], ["user_id", 1], ["chat_room_id", 1], ["created_at", 2017-01-10 15:32:03 UTC], ["updated_at", 2017-01-10 15:32:03 UTC]]
+[ActionCable] [vc.raghav@gmail.com]   [1m[35m (67.1ms)[0m  [1m[36mcommit transaction[0m
+[ActionCable] [vc.raghav@gmail.com] [ActiveJob] Enqueued MessageBroadcastJob (Job ID: c879be49-09bd-4c7d-92e1-a45b5dfc046b) to Async(default) with arguments: #<GlobalID:0x007f32fd0fd700 @uri=#<URI::GID gid://cable-chat/Message/7>>
+  [1m[36mMessage Load (0.1ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [c879be49-09bd-4c7d-92e1-a45b5dfc046b] Performing MessageBroadcastJob from Async(default) with arguments: #<GlobalID:0x007f32fd0b4230 @uri=#<URI::GID gid://cable-chat/Message/7>>
+[ActiveJob] [MessageBroadcastJob] [c879be49-09bd-4c7d-92e1-a45b5dfc046b]   [1m[36mChatRoom Load (0.1ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [c879be49-09bd-4c7d-92e1-a45b5dfc046b]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [c879be49-09bd-4c7d-92e1-a45b5dfc046b]   Rendered messages/_message.html.erb (1.7ms)
+[ActiveJob] [MessageBroadcastJob] [c879be49-09bd-4c7d-92e1-a45b5dfc046b] [ActionCable] Broadcasting to chat_rooms_1_channel: {:message=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"vc.raghav\" src=\"https://www.gravatar.com/avatar/e7772e09354d2c420a7087682c7c8c27?s=40\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-text\">\n          <span class=\"text-muted\">vc.raghav at 15:32:03 10 January 2017 says</span><br>\n          kack\n        </p>\n      </div>\n    </div>\n\n  </div>\n</div>"}
+[ActiveJob] [MessageBroadcastJob] [c879be49-09bd-4c7d-92e1-a45b5dfc046b] Performed MessageBroadcastJob from Async(default) in 5.95ms
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel transmitting {"message"=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"vc.raghav\" src=\"https://www.gravatar.com/avatar/e7772e09354d2c420a7087682c7c8c27?s=40\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p clas... (via streamed from chat_rooms_1_channel)
+[ActionCable] [vc.raghav@gmail.com] Finished "/cable/" [WebSocket] for 127.0.0.1 at 2017-01-10 21:02:05 +0530
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel stopped streaming from chat_rooms_1_channel
+Started GET "/chat_rooms/1" for 127.0.0.1 at 2017-01-10 21:02:05 +0530
+Processing by ChatRoomsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mChatRoom Load (0.2ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."chat_room_id" = 1[0m
+  Rendering chat_rooms/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered collection of messages/_message.html.erb [7 times] (9.1ms)
+  Rendered chat_rooms/show.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 40ms (Views: 35.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/cable" for 127.0.0.1 at 2017-01-10 21:02:05 +0530
+Started GET "/cable/" [WebSocket] for 127.0.0.1 at 2017-01-10 21:02:05 +0530
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: keep-alive, Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [vc.raghav@gmail.com] Registered connection (Z2lkOi8vY2FibGUtY2hhdC9Vc2VyLzE)
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel is transmitting the subscription confirmation
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel is streaming from chat_rooms_1_channel
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel#send_message({"message"=>"a s", "chat_room_id"=>1})
+[ActionCable] [vc.raghav@gmail.com]   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+[ActionCable] [vc.raghav@gmail.com]   [1m[36mChatRoom Load (0.2ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActionCable] [vc.raghav@gmail.com]   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("body", "user_id", "chat_room_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "a s"], ["user_id", 1], ["chat_room_id", 1], ["created_at", 2017-01-10 15:32:09 UTC], ["updated_at", 2017-01-10 15:32:09 UTC]]
+[ActionCable] [vc.raghav@gmail.com]   [1m[35m (210.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT  "messages".* FROM "messages" WHERE "messages"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+[ActionCable] [vc.raghav@gmail.com] [ActiveJob] Enqueued MessageBroadcastJob (Job ID: 33de7436-b1d4-42e6-908d-1e2bdc7cd815) to Async(default) with arguments: #<GlobalID:0x007f32b400f5d0 @uri=#<URI::GID gid://cable-chat/Message/8>>
+[ActiveJob] [MessageBroadcastJob] [33de7436-b1d4-42e6-908d-1e2bdc7cd815] Performing MessageBroadcastJob from Async(default) with arguments: #<GlobalID:0x007f32f82e2cc8 @uri=#<URI::GID gid://cable-chat/Message/8>>
+[ActiveJob] [MessageBroadcastJob] [33de7436-b1d4-42e6-908d-1e2bdc7cd815]   [1m[36mChatRoom Load (0.1ms)[0m  [1m[34mSELECT  "chat_rooms".* FROM "chat_rooms" WHERE "chat_rooms"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [33de7436-b1d4-42e6-908d-1e2bdc7cd815]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [MessageBroadcastJob] [33de7436-b1d4-42e6-908d-1e2bdc7cd815]   Rendered messages/_message.html.erb (1.6ms)
+[ActiveJob] [MessageBroadcastJob] [33de7436-b1d4-42e6-908d-1e2bdc7cd815] [ActionCable] Broadcasting to chat_rooms_1_channel: {:message=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"vc.raghav\" src=\"https://www.gravatar.com/avatar/e7772e09354d2c420a7087682c7c8c27?s=40\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p class=\"card-text\">\n          <span class=\"text-muted\">vc.raghav at 15:32:09 10 January 2017 says</span><br>\n          a s\n        </p>\n      </div>\n    </div>\n\n  </div>\n</div>"}
+[ActiveJob] [MessageBroadcastJob] [33de7436-b1d4-42e6-908d-1e2bdc7cd815] Performed MessageBroadcastJob from Async(default) in 5.45ms
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel transmitting {"message"=>"<div class=\"card\">\n  <div class=\"card-block\">\n    <div class=\"row\">\n      <div class=\"col-md-1\">\n        <img alt=\"vc.raghav\" src=\"https://www.gravatar.com/avatar/e7772e09354d2c420a7087682c7c8c27?s=40\" />\n      </div>\n      <div class=\"col-md-11\">\n        <p clas... (via streamed from chat_rooms_1_channel)
+[ActionCable] [vc.raghav@gmail.com] Finished "/cable/" [WebSocket] for 127.0.0.1 at 2017-01-10 21:02:12 +0530
+[ActionCable] [vc.raghav@gmail.com] ChatRoomsChannel stopped streaming from chat_rooms_1_channel
+Started GET "/chat" for 127.0.0.1 at 2017-01-10 21:02:12 +0530
+Processing by ChatRoomsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering chat_rooms/index.html.erb within layouts/application
+  [1m[36mChatRoom Load (0.2ms)[0m  [1m[34mSELECT "chat_rooms".* FROM "chat_rooms"[0m
+  Rendered collection of chat_rooms/_chat_room.html.erb [1 times] (1.7ms)
+  Rendered chat_rooms/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-10 21:02:13 +0530
+Processing by HomeController#landing_page as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/landing_page.html.erb within layouts/application
+  Rendered home/landing_page.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-10 21:02:14 +0530
+Processing by HomeController#landing_page as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/landing_page.html.erb within layouts/application
+  Rendered home/landing_page.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 23ms (Views: 20.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/city/4" for 127.0.0.1 at 2017-01-10 21:02:20 +0530
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering cities/show.html.erb within layouts/application
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" INNER JOIN "city_room_relations" ON "rooms"."id" = "city_room_relations"."room_id" WHERE "city_room_relations"."city_id" = ?[0m  [["city_id", 4]]
+  Rendered cities/show.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 31ms (Views: 27.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/room/4" for 127.0.0.1 at 2017-01-10 21:02:22 +0530
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rooms/show.html.erb within layouts/application
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 4], ["LIMIT", 1]]
+  Rendered rooms/show.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 31ms (Views: 26.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/host/4" for 127.0.0.1 at 2017-01-10 21:02:33 +0530
+Processing by HostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mHost Load (0.2ms)[0m  [1m[34mSELECT  "hosts".* FROM "hosts" WHERE "hosts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering hosts/show.html.erb within layouts/application
+  [1m[36mCityHostRelation Load (0.2ms)[0m  [1m[34mSELECT  "city_host_relations".* FROM "city_host_relations" WHERE "city_host_relations"."host_id" = ? LIMIT ?[0m  [["host_id", 4], ["LIMIT", 1]]
+  [1m[36mCity Load (0.1ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "city_host_relations".* FROM "city_host_relations" WHERE "city_host_relations"."host_id" = ? LIMIT ?[0m  [["host_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "city_host_relations".* FROM "city_host_relations" WHERE "city_host_relations"."host_id" = ? LIMIT ?[0m  [["host_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered hosts/show.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 68ms (Views: 36.1ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/room/4" for 127.0.0.1 at 2017-01-10 21:02:35 +0530
+Processing by RoomsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT  "rooms".* FROM "rooms" WHERE "rooms"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering rooms/show.html.erb within layouts/application
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" INNER JOIN "city_room_relations" ON "cities"."id" = "city_room_relations"."city_id" WHERE "city_room_relations"."room_id" = ? ORDER BY "cities"."id" ASC LIMIT ?[0m  [["room_id", 4], ["LIMIT", 1]]
+  Rendered rooms/show.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 38ms (Views: 34.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/city/4" for 127.0.0.1 at 2017-01-10 21:03:05 +0530
+Processing by CitiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering cities/show.html.erb within layouts/application
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" INNER JOIN "city_room_relations" ON "rooms"."id" = "city_room_relations"."room_id" WHERE "city_room_relations"."city_id" = ?[0m  [["city_id", 4]]
+  Rendered cities/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 28ms (Views: 22.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-01-10 21:03:08 +0530
+Processing by HomeController#landing_page as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home/landing_page.html.erb within layouts/application
+  Rendered home/landing_page.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 29ms (Views: 25.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/search?query=chennai" for 127.0.0.1 at 2017-01-10 21:03:16 +0530
+Processing by CitiesController#search as HTML
+  Parameters: {"query"=>"chennai"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cities/search.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "cities" WHERE (name LIKE '%chennai%' OR state  LIKE '%chennai%')[0m
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE (name LIKE '%chennai%' OR state  LIKE '%chennai%') ORDER BY "cities"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" INNER JOIN "city_room_relations" ON "rooms"."id" = "city_room_relations"."room_id" WHERE "city_room_relations"."city_id" = ?[0m  [["city_id", 1]]
+  Rendered cities/search.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 24ms (Views: 20.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/search?query=mad" for 127.0.0.1 at 2017-01-10 21:03:26 +0530
+Processing by CitiesController#search as HTML
+  Parameters: {"query"=>"mad"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cities/search.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "cities" WHERE (name LIKE '%mad%' OR state  LIKE '%mad%')[0m
+  Rendered cities/search.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 21ms (Views: 18.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/search?query=mad" for 127.0.0.1 at 2017-01-10 21:03:55 +0530
+Processing by CitiesController#search as HTML
+  Parameters: {"query"=>"mad"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cities/search.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "cities" WHERE (name LIKE '%mad%' OR state  LIKE '%mad%')[0m
+  Rendered cities/search.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 22ms (Views: 19.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/search?query=mad" for 127.0.0.1 at 2017-01-10 21:04:03 +0530
+Processing by CitiesController#search as HTML
+  Parameters: {"query"=>"mad"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cities/search.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "cities" WHERE (name LIKE '%mad%' OR state  LIKE '%mad%')[0m
+  Rendered cities/search.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 30ms (Views: 26.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.self-d737dd882d0381ada51931b671a3a5d27b0c7d2e7c403fc24eb1b7319d7e793e.css?body=1" for 127.0.0.1 at 2017-01-10 21:04:03 +0530
+Started GET "/assets/jquery2.self-0a6570c8f60714fcfb2147cecaf229b5c0ffff626fe407344d3b00a2ad441b7c.js?body=1" for 127.0.0.1 at 2017-01-10 21:04:03 +0530
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2017-01-10 21:04:03 +0530
+Started GET "/assets/action_cable.self-97a1acc11db2782c1b61ce874bff887f64e903d3cb2b533eff50fb799c873c70.js?body=1" for 127.0.0.1 at 2017-01-10 21:04:03 +0530
+Started GET "/assets/channels/rooms.self-624f25abd37599882f2e5744cd4fbfaff89cbb19acee146cee142b84a45c9593.js?body=1" for 127.0.0.1 at 2017-01-10 21:04:03 +0530
+Started GET "/assets/turbolinks.self-ff1d37d088bcba87ddd5a9edcbdbf45f1103309d3785dfd2324d668bde626e5d.js?body=1" for 127.0.0.1 at 2017-01-10 21:04:03 +0530
+Started GET "/assets/application.self-b89234cf2659d7fedea75bca0b8d231ad7dfc2f3f57fcbaf5f44ed9dc384137b.js?body=1" for 127.0.0.1 at 2017-01-10 21:04:03 +0530
+Started GET "/assets/cable.self-6e0514260c1aa76eaf252412ce74e63f68819fd19bf740595f592c5ba4c36537.js?body=1" for 127.0.0.1 at 2017-01-10 21:04:03 +0530
+Started GET "/search?query=mad" for 127.0.0.1 at 2017-01-10 21:04:06 +0530
+Processing by CitiesController#search as HTML
+  Parameters: {"query"=>"mad"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering cities/search.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "cities" WHERE (name LIKE '%mad%' OR state  LIKE '%mad%')[0m
+  Rendered cities/search.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 19ms (Views: 16.2ms | ActiveRecord: 1.0ms)
+
+
