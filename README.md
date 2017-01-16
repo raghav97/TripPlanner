@@ -15,9 +15,16 @@ This is for downloaing the necessary Ruby gems.
 Now, to setup the database
 
 *rails db:drop*
+To drop the existing database
+
 *rails db:create*
+To create a new databse
+
 *rails db:migrate*
+To execute the necessary relations in the database
+
 *rails db:seed*
+To add values to the database
 
 Once the databse is setup, the server can be started using the command
 
